@@ -5,6 +5,7 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
+#include <cstring>
 
 
 namespace utils {
@@ -15,6 +16,8 @@ namespace utils {
     std::vector<std::string> split(std::string input, std::string delimiter);
 
     void suggest(std::string user_input, std::vector<std::string> options);
+
+    int parse_args(int argc, char** argv);
 }
 
 #endif // __UTILS_H__

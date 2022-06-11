@@ -23,6 +23,10 @@ if a command is not valid.
 
 # Extensions
 
+- currently the list of possible actions and the command layers are coupled but defined separately. This is a potential problem for maintainability as any changes must be made in both locations. This could be fixed by defining a macro which allows the action metadata
+to be defined along with the command (perhaps as a string above the command function definition), which would then work like a plugin
+architecture to register commands in the action list dynamically (well, at compile time).
+
 - different directions
 - multiple robots
 - make table N dimensional, possible by generalising the position (change from member variables x and y to a vector) and various
