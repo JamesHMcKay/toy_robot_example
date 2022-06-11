@@ -3,7 +3,7 @@
 
 #include <map>
 
-enum Direction {
+enum class Direction {
     NORTH,
     EAST,
     SOUTH,

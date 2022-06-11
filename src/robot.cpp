@@ -7,7 +7,6 @@ Robot::Robot(Table* table) : table(table) {
     initialised = false;
 }
 
-
 bool Robot::is_initialised() {
     return initialised;
 }
@@ -57,16 +56,16 @@ void Robot::move() {
     int new_x = x;
     int new_y = y;
     switch (direction) {
-    case 0:
+    case Direction::NORTH:
         new_y++;
         break;
-    case 1:
+    case Direction::EAST:
         new_x++;
         break;
-    case 2:
+    case Direction::SOUTH:
         new_y--;
         break;
-    case 3:
+    case Direction::WEST:
         new_x--;
         break;
     }

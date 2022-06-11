@@ -56,18 +56,18 @@ namespace utils {
         }
     }
 
-    int parse_args(int argc, char** argv) {
+    ProgramMode parse_args(int argc, char** argv) {
         if (argc == 3 && strcmp(argv[1], "-f") == 0) {
-            return 1;
+            return ProgramMode::FROM_FILE;
         }
         else if (argc > 1) {
             std::cout << "Invalid usage" << std::endl;
             std::cout << "Usage for file input        : ./robot -f <input_file>" << std::endl;
             std::cout << "Usage for interactive input : ./robot" << std::endl;
-            return 0;
+            return ProgramMode::EXIT;
         }
         else {
-            return 2;
+            return ProgramMode::INTERACTIVE;
         }
     }
 }

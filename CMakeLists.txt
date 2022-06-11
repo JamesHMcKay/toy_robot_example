@@ -7,7 +7,7 @@ set(SOURCES
     src/actions.cpp
     src/utils.cpp
     src/commands.cpp
-    src/input.cpp
+    src/user_input.cpp
     src/robot.cpp
     src/main.cpp
 )

@@ -1,8 +1,7 @@
 #include "commands.hpp"
 
 
-namespace commands
-{
+namespace commands {
     void move(Robot& robot, std::vector<std::string>& parameters) {
         robot.move();
     }

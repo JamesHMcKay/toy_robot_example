@@ -9,6 +9,12 @@
 
 
 namespace utils {
+    enum class ProgramMode {
+        INTERACTIVE,
+        FROM_FILE,
+        EXIT
+    };
+
     int parse_int(std::string s);
 
     int string_similarity(std::string s1, std::string s2);
@@ -17,7 +23,7 @@ namespace utils {
 
     void suggest(std::string user_input, std::vector<std::string> options);
 
-    int parse_args(int argc, char** argv);
+    ProgramMode parse_args(int argc, char** argv);
 }
 
 #endif // __UTILS_H__
