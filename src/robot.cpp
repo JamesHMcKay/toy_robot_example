@@ -27,51 +27,32 @@ std::string Robot::report() {
 }
 
 void Robot::turn_left() {
-    int direction_index = static_cast<int>(direction);
-    int direction_length = static_cast<int>(DIRECTION_MAP.size());
-    direction_index = (direction_index + direction_length - 1) % direction_length;
-    direction = static_cast<Direction>(direction_index);
+    directions::turn_left(direction);
 }
 
 void Robot::turn_right() {
-    int direction_index = static_cast<int>(direction);
-    int direction_length = static_cast<int>(DIRECTION_MAP.size());
-    direction_index = (direction_index + 1) % direction_length;
-    direction = static_cast<Direction>(direction_index);
+    directions::turn_right(direction);
 }
 
 void Robot::place(int _x, int _y, Direction _direction) {
-    if (table->is_on_table(_x, _y)) {
+    Position position(_x, _y);
+    if (table->is_on_table(position)) {
         x = _x;
         y = _y;
         direction = _direction;
         initialised = true;
     }
     else {
-        std::cout << "Invalid position" << std::endl;
+        std::cout << "Invalid position" << x << ", " << y << std::endl;
     }
 }
 
 void Robot::move() {
-    int new_x = x;
-    int new_y = y;
-    switch (direction) {
-    case Direction::NORTH:
-        new_y++;
-        break;
-    case Direction::EAST:
-        new_x++;
-        break;
-    case Direction::SOUTH:
-        new_y--;
-        break;
-    case Direction::WEST:
-        new_x--;
-        break;
-    }
-    if (table->is_on_table(new_x, new_y)) {
-        x = new_x;
-        y = new_y;
+    Position new_position = { x, y };
+    new_position.move(direction, step_size);
+    if (table->is_on_table(new_position)) {
+        x = new_position.x;
+        y = new_position.y;
     }
     else {
         std::cout << "Cannot move off the table!" << std::endl;

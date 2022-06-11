@@ -6,6 +6,7 @@
 
 #include "directions.hpp"
 #include "table.hpp"
+#include "position.hpp"
 
 
 class Robot {
@@ -14,6 +15,8 @@ class Robot {
     Direction direction;
     bool initialised;
     Table* table;
+
+    static const int step_size = 1;
 
 public:
     Robot(Table* _table);
