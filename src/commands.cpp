@@ -1,5 +1,5 @@
-#include "utils.hpp"
 #include "commands.hpp"
+
 
 namespace commands
 {
@@ -16,16 +16,36 @@ namespace commands
     }
 
     void place(Robot& robot, std::vector<std::string>& parameters) {
-        int x = std::stoi(parameters[0]);
-        int y = std::stoi(parameters[1]);
-        int direction = std::stoi(parameters[2]);
+        int x = utils::parse_int(parameters[0]);
+        int y = utils::parse_int(parameters[1]);
 
-        robot.x = x;
-        robot.y = y;
-        robot.direction = direction;
+        if (x == -1) {
+            std::cout << "Invalid x coordinate" << std::endl;
+            return;
+        }
+        if (y == -1) {
+            std::cout << "Invalid y coordinate" << std::endl;
+            return;
+        }
+
+        if (DIRECTION_MAP.find(parameters[2]) == DIRECTION_MAP.end()) {
+            std::cout << "Invalid direction '" << parameters[2] << "'" << std::endl;
+            std::vector<std::string> options;
+            for (auto& direction : DIRECTION_MAP) {
+                options.push_back(direction.first);
+            }
+
+            utils::suggest(parameters[2], options);
+
+            return;
+        }
+
+        robot.place(x, y, DIRECTION_MAP.at(parameters[2]));
+
+        std::cout << "PLACE COMMAND EXECUTED" << std::endl;
     }
 
     void report(Robot& robot, std::vector<std::string>& parameters) {
-        std::cout << "X: " << robot.x << " Y: " << robot.y << " Direction: " << robot.direction << std::endl;
+        std::cout << robot.report() << std::endl;
     }
 }

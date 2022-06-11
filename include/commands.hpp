@@ -1,6 +1,14 @@
 #ifndef __COMMANDS_H__
 #define __COMMANDS_H__
 
+#include "utils.hpp"
+#include "directions.hpp"
+#include "robot.hpp"
+
+#include <string>
+#include <vector>
+#include <iostream>
+
 namespace commands
 {
     void move(Robot& robot, std::vector<std::string>& parameters);
@@ -14,4 +22,4 @@ namespace commands
     void report(Robot& robot, std::vector<std::string>& parameters);
 }
 
-#endif
+#endif // __COMMANDS_H__

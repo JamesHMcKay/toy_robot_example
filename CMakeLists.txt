@@ -3,8 +3,12 @@ cmake_minimum_required(VERSION 3.5)
 project (robot)
 
 set(SOURCES
+    src/directions.cpp
+    src/actions.cpp
     src/utils.cpp
     src/commands.cpp
+    src/input.cpp
+    src/robot.cpp
     src/main.cpp
 )
 

@@ -1,49 +1,34 @@
+#ifndef __ROBOT_H__
+#define __ROBOT_H__
 
-#ifndef __UTILS_H__
-#define __UTILS_H__
+#include <iostream>
+#include <sstream>
+
+#include "directions.hpp"
+#include "table.hpp"
+
 
 class Robot {
     int x;
     int y;
-    int direction;
+    Direction direction;
     bool initialised;
+    Table* table;
 
 public:
-    Robot() {
-        x = 0;
-        y = 0;
-        direction = 0;
-        initialised = false;
-    }
+    Robot(Table* _table);
 
-    void turn_left() {
-        direction = (direction + 3) % 4;
-    }
+    bool is_initialised();
 
-    void turn_right() {
-        direction = (direction + 1) % 4;
-    }
+    std::string report();
 
-    void move() {
-        switch (direction) {
-        case 0:
-            y++;
-            break;
-        case 1:
-            x++;
-            break;
-        case 2:
-            y--;
-            break;
-        case 3:
-            x--;
-            break;
-        }
-    }
+    void turn_left();
 
-    int x;
-    int y;
-    int direction;
+    void turn_right();
+
+    void place(int _x, int _y, Direction _direction);
+
+    void move();
 };
 
-#endif
+#endif // __ROBOT_H__

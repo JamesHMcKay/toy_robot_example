@@ -3,19 +3,18 @@
 
 #include <string>
 #include <iostream>
+#include <sstream>
 #include <vector>
 
-struct UserInput {
-    std::string action;
-    std::vector<std::string> parameters;
-};
 
 namespace utils {
-    UserInput decompose_input(std::string input);
-
-    int validate_user_input(UserInput input);
+    int parse_int(std::string s);
 
     int string_similarity(std::string s1, std::string s2);
+
+    std::vector<std::string> split(std::string input, std::string delimiter);
+
+    void suggest(std::string user_input, std::vector<std::string> options);
 }
 
-#endif
+#endif // __UTILS_H__
