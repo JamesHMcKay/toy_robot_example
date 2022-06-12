@@ -16,7 +16,7 @@ UserInput::UserInput(std::string input) {
 
 void UserInput::execute(Robot& robot) {
     ActionDefinition action_definition = ACTION_MAP.at(action);
-    if (robot.is_initialised() || !action_definition.must_be_initialized) {
+    if (robot.is_initialised() || !action_definition.robot_init_required) {
         action_definition.command(robot, parameters);
     }
     else {

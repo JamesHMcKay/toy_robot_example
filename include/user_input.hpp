@@ -13,6 +13,7 @@
 
 struct UserInput {
     std::string action;
+
     std::vector<std::string> parameters;
 
     const std::string action_delimiter = " ";

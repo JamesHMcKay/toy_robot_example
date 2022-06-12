@@ -10,8 +10,11 @@
 
 class Robot {
     Position position;
+
     Direction direction;
+
     bool initialised;
+
     Table* table;
 
     static const int step_size = 1;
@@ -20,8 +23,6 @@ public:
     Robot(Table* _table);
 
     bool is_initialised();
-
-    // std::string report();
 
     Position get_position();
 

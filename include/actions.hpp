@@ -7,16 +7,19 @@
 
 struct ActionDefinition {
     std::string name;
+
     int number_of_parameters;
-    bool must_be_initialized;
+
+    bool robot_init_required;
+
     void (*command)(Robot&, std::vector<std::string>&);
 
     ActionDefinition(
         std::string name,
         int number_of_parameters,
-        bool must_be_initialized,
+        bool robot_init_required,
         void (*command)(Robot&, std::vector<std::string>&)
-    ) : name(name), number_of_parameters(number_of_parameters), must_be_initialized(must_be_initialized), command(command) {}
+    ) : name(name), number_of_parameters(number_of_parameters), robot_init_required(robot_init_required), command(command) {}
 };
 
 extern const std::map<std::string, ActionDefinition> ACTION_MAP;

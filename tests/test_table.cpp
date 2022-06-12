@@ -20,3 +20,9 @@ TEST(test_table, out_of_bounds_negative) {
   Table table(5, 5);
   EXPECT_FALSE(table.is_on_table(Position(-1, 0)));
 }
+
+TEST(test_table, negative_dimensions) {
+  EXPECT_THROW({
+    Table table(5, -1);
+    }, std::invalid_argument);
+}

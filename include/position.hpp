@@ -5,10 +5,13 @@
 
 struct Position {
     int x;
+
     int y;
 
 public:
     Position(int x, int y) : x(x), y(y) {}
+    // no exception thrown for negative coordinates since it is an expected possible user input
+    // which is handled by Robot position validation instead
 
     Position() : x(0), y(0) {}
 

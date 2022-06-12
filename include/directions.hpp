@@ -13,6 +13,8 @@ enum class Direction {
 
 extern const std::map<std::string, Direction> DIRECTION_MAP;
 
+extern const int N_DIRECTIONS;
+
 namespace directions {
     void turn_left(Direction& direction);
 

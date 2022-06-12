@@ -7,18 +7,16 @@ const std::map<std::string, Direction> DIRECTION_MAP = {
     {"WEST",  Direction::WEST}
 };
 
+const int N_DIRECTIONS = static_cast<int>(DIRECTION_MAP.size());
+
 namespace directions {
     void turn_left(Direction& direction) {
-        int direction_index = static_cast<int>(direction);
-        int direction_length = static_cast<int>(DIRECTION_MAP.size());
-        direction_index = (direction_index + direction_length - 1) % direction_length;
-        direction = static_cast<Direction>(direction_index);
+        int index = (static_cast<int>(direction) + N_DIRECTIONS - 1) % N_DIRECTIONS;
+        direction = static_cast<Direction>(index);
     }
 
     void turn_right(Direction& direction) {
-        int direction_index = static_cast<int>(direction);
-        int direction_length = static_cast<int>(DIRECTION_MAP.size());
-        direction_index = (direction_index + 1) % direction_length;
-        direction = static_cast<Direction>(direction_index);
+        int index = (static_cast<int>(direction) + 1) % N_DIRECTIONS;
+        direction = static_cast<Direction>(index);
     }
 }

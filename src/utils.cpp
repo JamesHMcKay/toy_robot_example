@@ -58,6 +58,8 @@ namespace utils {
     }
 
     ProgramMode parse_args(int argc, char** argv) {
+        // This is a very basic parser. Would need to be rewritten in a more general way
+        // if we were to add more possible commands.
         if (argc == 3 && strcmp(argv[1], "-f") == 0) {
             return ProgramMode::FROM_FILE;
         }

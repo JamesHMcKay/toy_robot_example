@@ -27,7 +27,7 @@ FetchContent_Declare(
   googletest
   URL https://github.com/google/googletest/archive/refs/tags/release-1.11.0.zip
 )
-# Prevent overriding the parent project's compiler/linker settings
+# Prevent overriding the parent project's compiler/linker settings (from Google Test documentation)
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
