@@ -4,12 +4,14 @@
 
 This is a simple toy robot simulator to demonstrate some C++ code along with some testing.
 
+The focus of this application has been writing maintainable, testable and clean code. While the same outcome could be achieved with much less code and abstractions, using more hard coding, if statements and tightly coupled logic, this has been written as if it is a large program, with lots of seperation of concerns and breaking parts up as much as possible. In some cases there is more indirection than really is nessessary, but it is really for demonstration purposes, and has helped make the testing easy to do.
+
 The application is a simulation of a toy robot moving on a square table top, of dimensions 5 units x 5 units. There are no
 other obstructions on the table surface. The robot is free to roam around the surface of the table, but must be prevented
 from falling to destruction. Any movement that would result in the robot falling from the table must be prevented,
 however further valid movement commands must still be allowed.
 
-This application has been tested with gcc version 9.4.0 on Ubuntu 20.04.3 LTS (running on Windows 10 build 21H2 using WLS2 kernal 5.10.16) and cmake version 3.16.3.
+This application has been tested with gcc version 9.4.0 on Ubuntu 20.04.3 LTS (running on Windows 10 build 21H2 using WLS2 kernal 5.10.16) using cmake version 3.16.3 and the C++11 standard.
 
 ## Quick start
 
@@ -46,11 +48,11 @@ Note that the text file must have a new command on each line and must have an em
 
 The following are valid commands to be used in an interactive session or from a text file (seperated by new lines).
 
-PLACE X,Y,F
-MOVE
-LEFT
-RIGHT
-REPORT
+* PLACE X,Y,F
+* MOVE
+* LEFT
+* RIGHT
+* REPORT
 
 where X,Y are the coordinates of the robot on the table, in integers, and F is the direction the robot is facing from the set NORTH, SOUTH, EAST, WEST (case sensitive).
 
@@ -68,6 +70,8 @@ All tests can be run from the build directory using the command
 make test
 ```
 
+All tests run as part of the Docker build step and any failures will result in the build not succeeding on CircleCI (see badge at the top of this document).
+
 There are two layers of testing with this application. Unit tests are provided using the Google Test framework. These can be run from the executable with the command
 ```bash
 ./run_tests
@@ -81,8 +85,6 @@ End-to-end tests are provided in an extremely basic form. To avoid setting up a 
 ```
 
 See the end_to_end_tests.sh script for more details.
-
-All these tests run as part of the Docker build step and any failures will result in the build not succeeding.
 
 # Design
 
@@ -107,9 +109,9 @@ Has an action of `PLACE` and a vector of parameters of `('1','2', 'NORTH')`.
 
 ## Levels of validation
 
-This program must be robust to user input. How we do this can become difficult to maintain if not managed well as there are multiple conditions to meet and the order of these conditions is important. The validation works as follows:
+This program must be robust to user input. How we do this can become difficult to maintain if not managed well because there are multiple conditions to meet and the order of these conditions is important. The validation works as follows:
 
-- The first layer is the raw user input, when the input string is decomposed into an action and parameter is is checked if the action exists and if the number of parameters is correct. Metadata on the possible commands is used, such as knowing that a MOVE command should not have any parameters. But the actual parameters are not checked at this stage.
+- The first layer is the raw user input, when the input string is decomposed into an action and parameter. It is checked if the action exists and if the number of parameters is correct for that action type. Metadata on the possible commands is used, such as knowing that a MOVE command should not have any parameters. The actual parameter values are not checked at this stage.
 
 - The second level is managed by the command layer. The commands know what kind of inputs they can accept, such as knowing a coordinate must be an integer. Since these conditions are tightly coupled to the business logic of the command itself, it makes sense to have this validation along with the command.
 
@@ -138,10 +140,10 @@ Some things that could be improved as well:
 
 - There is no logging framework set up in this application. I haven't done this as it requires a fair bit of work to implement a framework (such as boost logging) and it wasn't a specific requirement. But basically, there would be various places throughout the code where we could create log messages instead of using std out.
 
-- Currently the list of possible actions(ACTION_MAP) and their command functions are tightly coupled. This is a potential problem for maintainability, as changes may need to be made in two places. This could be fixed by defining a macro which allows the action metadata
+- Currently the list of possible actions (ACTION_MAP) and their command functions are tightly coupled. This is a potential problem for maintainability, as changes may need to be made in two places. This could be fixed by defining a macro which allows the action metadata
 to be defined along with the command (perhaps as a string above the command function definition), which would then work like a plugin
 architecture to register commands in the ACTION_MAP dynamically (well, at compile time). With this set up the ACTION_MAP would not even need to be defined.
 
-- The console UI is not very informative. Would be good to give the user more information such as what commands are possible (and so this dynamically based on the current state of the robot and the available actions) and make it clear how to exit the program.
+- The console user interface is not very informative. Would be good to give the user more information such as what commands are possible (given the current state of the robot and the available actions) and make it clear how to exit the program.
 
-- The command line arguments handling is extremely basic and not very extensible, it needs to be rewritten in a more general way. First job would be to implement a help command which would print out a list of possible commands and their parameters.
+- The command line arguments handling is extremely basic and not very extensible, it needs to be rewritten in a more general way. First job would be to implement a help command which would print out a list of possible commands and their parameters and move the list of possible program types and their properties into a list like data structure which can be iterated through.
