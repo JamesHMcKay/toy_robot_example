@@ -9,9 +9,16 @@ other obstructions on the table surface. The robot is free to roam around the su
 from falling to destruction. Any movement that would result in the robot falling from the table must be prevented,
 however further valid movement commands must still be allowed.
 
+This application has been tested with gcc version 9.4.0 on Ubuntu 20.04.3 LTS (running on Windows 10 build 21H2 using WLS2 kernal 5.10.16) and cmake version 3.16.3.
+
 ## Quick start
 
-The provided Docker file will build the application and run all the tests. To build locally use the following commands
+The provided Docker file will build the application and run all the tests. This can be done with the command
+```bash
+sudo docker build .
+```
+
+To build locally use the following commands
 
 ```bash
 mkdir build
