@@ -6,15 +6,19 @@ RUN apt-get update && apt-get install -y \
     g++ \
     cmake \
     build-essential
-WORKDIR /usr/src/app
+
+WORKDIR /usr/src/app/
+
 COPY . .
-RUN rm -rf build/
-RUN mkdir build
 
-# RUN cd build/
-# RUN cmake ..
-# RUN make
-# RUN make test
+RUN mkdir -p docker_build/
+WORKDIR /usr/src/app/docker_build/
+
+RUN set -ex;\
+    cmake ..; \
+    make; \
+    make test;
 
 
-CMD ["./robot", "-f", "../test_data/commands_1"]
+# CMD ["./robot", "-f", "../test_data/commands_1"]
+CMD ["make", "test"]
