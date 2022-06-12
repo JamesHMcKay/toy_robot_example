@@ -2,6 +2,7 @@
 #define __DIRECTIONS_H__
 
 #include <map>
+#include <string>
 
 enum class Direction {
     NORTH,
