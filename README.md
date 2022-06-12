@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/JamesHMcKay/toy_robot_example/tree/master.svg?style=svg)](https://circleci.com/gh/JamesHMcKay/toy_robot_example/tree/master)
+
 # Toy Robot Code Challenge
 
 # Design
