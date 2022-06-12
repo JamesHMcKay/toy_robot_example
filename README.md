@@ -42,6 +42,23 @@ To run with a file use:
 
 Note that the text file must have a new command on each line and must have an empty line at the end (otherwise the last command will be skipped).
 
+## Usage
+
+The following are valid commands to be used in an interactive session or from a text file (seperated by new lines).
+
+PLACE X,Y,F
+MOVE
+LEFT
+RIGHT
+REPORT
+
+where X,Y are the coordinates of the robot on the table, in integers, and F is the direction the robot is facing from the set NORTH, SOUTH, EAST, WEST (case sensitive).
+
+The robot must be initialized with a valid PLACE command before any other commands can be used.
+
+If a command is not valid the application may print a message informing the user of the error, and where possible, making a suggestion to fix the input.
+
+The table coordinates are indexed from 0, so for our 5 by 5 unit table the Robot can range from 0,0 to 4,4.
 
 ## Testing
 
@@ -118,6 +135,8 @@ other generalisations to the commands to allow multiple inputs and a more genera
 - Various changes to the input layer. No need to list all the possibilities here, but in general for an application these could include a REST API, a user interface, reading from a database and so on.
 
 Some things that could be improved as well:
+
+- There is no logging framework set up in this application. I haven't done this as it requires a fair bit of work to implement a framework (such as boost logging) and it wasn't a specific requirement. But basically, there would be various places throughout the code where we could create log messages instead of using std out.
 
 - Currently the list of possible actions(ACTION_MAP) and their command functions are tightly coupled. This is a potential problem for maintainability, as changes may need to be made in two places. This could be fixed by defining a macro which allows the action metadata
 to be defined along with the command (perhaps as a string above the command function definition), which would then work like a plugin

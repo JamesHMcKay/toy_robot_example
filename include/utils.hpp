@@ -6,6 +6,7 @@
 #include <sstream>
 #include <vector>
 #include <cstring>
+#include <algorithm>
 
 namespace utils {
     enum class ProgramMode {

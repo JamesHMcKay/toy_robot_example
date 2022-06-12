@@ -2,10 +2,28 @@
 
 namespace utils {
     int get_positive_int(std::string input, std::string value_name) {
+        // check for decimal point in input and raise error
+        if (input.find('.') != std::string::npos) {
+            std::cout << value_name << " must be an integer." << std::endl;
+            return -1;
+        }
+
+        // remove any white space in string
+        input.erase(std::remove_if(input.begin(), input.end(), ::isspace), input.end());
+
+        // check for any non-numeric characters in input and raise error
+        for (char c : input) {
+            if (!isdigit(c)) {
+                std::cout << value_name << " must be an integer." << std::endl;
+                return -1;
+            }
+        }
+
+        // convert string to int and return -1 not valid or negative
         std::stringstream sstr(input);
         int result;
         bool success = static_cast<bool>(sstr >> result);
-        if (!success) {
+        if (!success || result < 0) {
             std::cout << "Invalid value for " << value_name << std::endl;
             return -1;
         }
@@ -58,8 +76,7 @@ namespace utils {
     }
 
     ProgramMode parse_args(int argc, char** argv) {
-        // This is a very basic parser. Would need to be rewritten in a more general way
-        // if we were to add more possible commands.
+        // Rewrite this to be more general if you want to add more arguments, currently very basic.
         if (argc == 3 && strcmp(argv[1], "-f") == 0) {
             return ProgramMode::FROM_FILE;
         }

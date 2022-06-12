@@ -5,6 +5,14 @@
 #include "utils.hpp"
 
 TEST(test_utils, parse_int_success) {
+    std::string raw_input = "1";
+
+    int result = utils::get_positive_int(raw_input, "test");
+
+    EXPECT_EQ(result, 1);
+}
+
+TEST(test_utils, parse_int_success_with_whitespace) {
     std::string raw_input = " 1 ";
 
     int result = utils::get_positive_int(raw_input, "test");
@@ -12,7 +20,15 @@ TEST(test_utils, parse_int_success) {
     EXPECT_EQ(result, 1);
 }
 
-TEST(test_utils, parse_int_fail) {
+TEST(test_utils, parse_int_fail_not_integer) {
+    std::string raw_input = " 1.1 ";
+
+    int result = utils::get_positive_int(raw_input, "test");
+
+    EXPECT_EQ(result, -1);
+}
+
+TEST(test_utils, parse_int_fail_letter) {
     std::string raw_input = "a";
 
     int result = utils::get_positive_int(raw_input, "test");
@@ -48,7 +64,6 @@ TEST(test_utils, split) {
     EXPECT_EQ(result[1], "b");
     EXPECT_EQ(result[2], "c");
 }
-
 
 TEST(test_utils, suggest) {
     std::string input = "TEST";

@@ -14,7 +14,7 @@ namespace commands {
         }
 
         if (DIRECTION_MAP.find(parameters[2]) == DIRECTION_MAP.end()) {
-            std::cout << parameters[2] << "' is not a valid direction." << std::endl;
+            std::cout << "'" << parameters[2] << "' is not a valid direction." << std::endl;
             std::vector<std::string> options;
             for (auto& direction : DIRECTION_MAP) {
                 options.push_back(direction.first);

@@ -31,7 +31,7 @@ int UserInput::validate() {
             action_keys.push_back(action.first);
         }
 
-        std::cout << action << "' is not a valid action." << std::endl;
+        std::cout << "'" << action << "' is not a valid action." << std::endl;
         utils::suggest(action, action_keys);
 
         return 0;
