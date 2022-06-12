@@ -8,7 +8,6 @@
 #include "table.hpp"
 #include "position.hpp"
 
-
 class Robot {
     Position position;
     Direction direction;

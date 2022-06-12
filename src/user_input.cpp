@@ -2,16 +2,16 @@
 
 UserInput::UserInput(std::string input) {
     std::string delimiter = " ";
-    action = input.substr(0, input.find(delimiter));
+    action = input.substr(0, input.find(action_delimiter));
 
     std::string parameters_input = "";
 
-    if (input.find(delimiter) != std::string::npos) {
-        input.erase(0, input.find(delimiter) + delimiter.length());
+    if (input.find(action_delimiter) != std::string::npos) {
+        input.erase(0, input.find(action_delimiter) + action_delimiter.length());
         parameters_input = input;
     }
 
-    parameters = utils::split(parameters_input, ",");
+    parameters = utils::split(parameters_input, parameter_delimiter);
 }
 
 void UserInput::execute(Robot& robot) {
@@ -31,6 +31,7 @@ int UserInput::validate() {
             action_keys.push_back(action.first);
         }
 
+        std::cout << action << "' is not a valid action." << std::endl;
         utils::suggest(action, action_keys);
 
         return 0;
@@ -48,5 +49,3 @@ int UserInput::validate() {
 
     return 1;
 }
-
-

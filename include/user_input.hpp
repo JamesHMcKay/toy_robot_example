@@ -15,6 +15,10 @@ struct UserInput {
     std::string action;
     std::vector<std::string> parameters;
 
+    const std::string action_delimiter = " ";
+
+    const std::string parameter_delimiter = ",";
+
     UserInput(std::string input);
 
     int validate();

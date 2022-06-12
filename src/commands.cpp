@@ -1,20 +1,20 @@
 #include "commands.hpp"
 
-
 namespace commands {
     void move(Robot& robot, std::vector<std::string>& parameters) {
         robot.move();
     }
 
     void place(Robot& robot, std::vector<std::string>& parameters) {
-        int x = utils::parse_int(parameters[0], "X");
-        int y = utils::parse_int(parameters[1], "Y");
+        int x = utils::get_positive_int(parameters[0], "X");
+        int y = utils::get_positive_int(parameters[1], "Y");
 
         if (x == -1 || y == -1) {
             return;
         }
 
         if (DIRECTION_MAP.find(parameters[2]) == DIRECTION_MAP.end()) {
+            std::cout << parameters[2] << "' is not a valid direction." << std::endl;
             std::vector<std::string> options;
             for (auto& direction : DIRECTION_MAP) {
                 options.push_back(direction.first);

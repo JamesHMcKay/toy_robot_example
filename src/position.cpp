@@ -16,3 +16,12 @@ void Position::move(Direction direction, int magnitude) {
         break;
     }
 }
+
+bool operator== (const Position& p1, const Position& p2) {
+    return p1.x == p2.x && p1.y == p2.y;
+}
+
+bool operator!= (const Position& p1, const Position& p2) {
+    return p1.x != p2.x || p1.y != p2.y;
+}
+

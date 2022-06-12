@@ -5,7 +5,6 @@
 #include <string>
 #include "commands.hpp"
 
-
 struct ActionDefinition {
     std::string name;
     int number_of_parameters;

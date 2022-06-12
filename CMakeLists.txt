@@ -40,6 +40,8 @@ add_executable(
   tests/test_robot.cpp
   tests/test_position.cpp
   tests/test_directions.cpp
+  tests/test_user_input.cpp
+  tests/test_utils.cpp
   ${SOURCES}
 )
 target_include_directories(

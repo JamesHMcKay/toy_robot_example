@@ -7,7 +7,6 @@
 #include <vector>
 #include <cstring>
 
-
 namespace utils {
     enum class ProgramMode {
         INTERACTIVE,
@@ -15,7 +14,7 @@ namespace utils {
         EXIT
     };
 
-    int parse_int(std::string s, std::string value_name);
+    int get_positive_int(std::string s, std::string value_name);
 
     int string_similarity(std::string s1, std::string s2);
 

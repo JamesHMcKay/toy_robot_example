@@ -8,7 +8,6 @@
 
 typedef std::basic_istream<char> cmd_stream;
 
-
 void run(cmd_stream& commands, const std::function <bool(cmd_stream&, std::string)>& exit_program) {
     int table_size = 5;
     Table table(table_size, table_size);

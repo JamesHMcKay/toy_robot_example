@@ -1,7 +1,6 @@
 #ifndef __POSITION_H__
 #define __POSITION_H__
 
-
 #include "directions.hpp"
 
 struct Position {
@@ -14,6 +13,11 @@ public:
     Position() : x(0), y(0) {}
 
     void move(Direction direction, int magnitude);
+
+    friend bool operator== (const Position& p1, const Position& p2);
+
+    friend bool operator!= (const Position& p1, const Position& p2);
 };
+
 
 #endif // __POSITION_H__

@@ -1,7 +1,7 @@
 #include "utils.hpp"
 
 namespace utils {
-    int parse_int(std::string input, std::string value_name) {
+    int get_positive_int(std::string input, std::string value_name) {
         std::stringstream sstr(input);
         int result;
         bool success = static_cast<bool>(sstr >> result);
@@ -43,7 +43,6 @@ namespace utils {
     }
 
     void suggest(std::string user_input, std::vector<std::string> options) {
-        std::cout << "Input value '" << user_input << "' is not valid." << std::endl;
         std::string closest_string;
         int best_match = 0;
         for (auto& option : options) {

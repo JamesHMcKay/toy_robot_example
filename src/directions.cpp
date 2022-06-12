@@ -22,4 +22,3 @@ namespace directions {
         direction = static_cast<Direction>(direction_index);
     }
 }
-
