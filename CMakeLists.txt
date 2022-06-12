@@ -55,3 +55,5 @@ target_link_libraries(
 
 include(GoogleTest)
 gtest_discover_tests(run_tests)
+
+add_test(NAME end_to_end COMMAND ../end_to_end_tests.sh ${PROJECT_SOURCE_DIR} robot)

@@ -11,6 +11,8 @@ struct Position {
 public:
     Position(int x, int y) : x(x), y(y) {}
 
+    Position() : x(0), y(0) {}
+
     void move(Direction direction, int magnitude);
 };
 

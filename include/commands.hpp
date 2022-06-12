@@ -4,6 +4,7 @@
 #include "utils.hpp"
 #include "directions.hpp"
 #include "robot.hpp"
+#include "position.hpp"
 
 #include <string>
 #include <vector>

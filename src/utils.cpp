@@ -1,14 +1,15 @@
 #include "utils.hpp"
 
 namespace utils {
-    int parse_int(std::string input) {
+    int parse_int(std::string input, std::string value_name) {
         std::stringstream sstr(input);
         int result;
         bool success = static_cast<bool>(sstr >> result);
-        if (success) {
-            return result;
+        if (!success) {
+            std::cout << "Invalid value for " << value_name << std::endl;
+            return -1;
         }
-        return -1;
+        return result;
     }
 
     int string_similarity(std::string s1, std::string s2) {
@@ -42,6 +43,7 @@ namespace utils {
     }
 
     void suggest(std::string user_input, std::vector<std::string> options) {
+        std::cout << "Input value '" << user_input << "' is not valid." << std::endl;
         std::string closest_string;
         int best_match = 0;
         for (auto& option : options) {

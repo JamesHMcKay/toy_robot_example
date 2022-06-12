@@ -26,8 +26,6 @@ void UserInput::execute(Robot& robot) {
 
 int UserInput::validate() {
     if (ACTION_MAP.find(action) == ACTION_MAP.end()) {
-        std::cout << "Invalid action: " << action << std::endl;
-
         std::vector<std::string> action_keys;
         for (auto& action : ACTION_MAP) {
             action_keys.push_back(action.first);

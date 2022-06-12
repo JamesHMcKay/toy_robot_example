@@ -10,8 +10,7 @@
 
 
 class Robot {
-    int x;
-    int y;
+    Position position;
     Direction direction;
     bool initialised;
     Table* table;
@@ -23,13 +22,15 @@ public:
 
     bool is_initialised();
 
-    std::string report();
+    // std::string report();
 
-    void turn_left();
+    Position get_position();
 
-    void turn_right();
+    void set_direction(Direction new_direction);
 
-    void place(int _x, int _y, Direction _direction);
+    Direction get_direction();
+
+    void place(Position new_position, Direction new_direction);
 
     void move();
 };

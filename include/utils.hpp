@@ -15,7 +15,7 @@ namespace utils {
         EXIT
     };
 
-    int parse_int(std::string s);
+    int parse_int(std::string s, std::string value_name);
 
     int string_similarity(std::string s1, std::string s2);
 
