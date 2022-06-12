@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/JamesHMcKay/toy_robot_example/tree/master.svg?style=svg)](https://circleci.com/gh/JamesHMcKay/toy_robot_example/tree/master)
+[![CircleCI](https://circleci.com/gh/JamesHMcKay/toy_robot_example/tree/master.svg?style=svg&circle-token=e4ad079552a25fc339db06156e8ba754c06440d8)](https://circleci.com/gh/JamesHMcKay/toy_robot_example/tree/master)
 
 # Toy Robot Code Challenge
 
