@@ -1,0 +1,9 @@
+orbs:
+  docker: circleci/docker@1.7.0
+version: 2.1
+workflows:
+  build-docker-image-only:
+    jobs:
+      - docker/publish:
+          deploy: false
+          image: toy_robot_example
